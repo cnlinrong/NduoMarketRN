@@ -24,7 +24,9 @@ export default class AppTableCell extends Component {
             </View>
             <View style={styles.middle_container}>
               <Text style={styles.app_name}>{this.props.appData.name}</Text>
-              <Text style={styles.app_info}>{this.props.appData.downNumFormat + ' ' + this.props.appData.sizeFormat}</Text>
+              <View style={styles.middle_text}>
+                <Text style={styles.app_info}>{this.props.appData.downNumFormat + ' ' + this.props.appData.sizeFormat}</Text>
+              </View>
               <Text style={styles.app_desc} ellipsizeMode="tail" numberOfLines={1}>{this.props.appData.intro}</Text>
             </View>
             <View style={styles.download_container}>
@@ -55,7 +57,6 @@ const styles = StyleSheet.create({
     paddingRight: 10
   },
   middle_container: {
-    justifyContent: 'center',
     flex: 1,
     paddingRight: 15
   },
@@ -63,9 +64,13 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: '#000922'
   },
+  middle_text: {
+    flex: 1,
+    justifyContent: 'center'
+  },
   app_info: {
     fontSize: 12,
-    color: '#a0a4ab'
+    color: '#a0a4ab',
   },
   app_desc: {
     fontSize: 12,
