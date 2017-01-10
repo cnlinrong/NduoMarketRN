@@ -20,7 +20,7 @@ export default class App extends Component {
   componentDidMount() {
     this.timer = setTimeout(() => {
       this.setState({loading: false});
-    }, 0);
+    }, 2000);
   }
 
   componentWillUnmount() {

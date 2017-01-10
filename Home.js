@@ -20,7 +20,7 @@ import Software from './Software.js';
 import Find from './Find.js';
 import Mgr from './Mgr.js';
 
-const TabNavigatorItem =TabNavigator.Item;
+const TabNavigatorItem = TabNavigator.Item;
 
 const TAB_NORMAL_1=require('./img/main_ic_home_normal.png');
 const TAB_NORMAL_2=require('./img/main_ic_game_normal.png');
@@ -36,23 +36,19 @@ const TAB_PRESS_5=require('./img/main_ic_me_pressed.png');
 
 export default class Home extends Component {
 
-  constructor(){
+  constructor() {
     super();
-    this.state={
-      selectedTab:'Recommend',
+    this.state = {
+      selectedTab: 'Recommend',
     }
   }
 
   /**
   tab点击方法
   **/
-  onPress(tabName){
-    if(tabName){
-      this.setState(
-        {
-          selectedTab:tabName,
-        }
-      );
+  onPress(tabName) {
+    if (tabName) {
+      this.setState({selectedTab: tabName});
     }
   }
 
@@ -84,7 +80,7 @@ export default class Home extends Component {
          tabPress=TAB_PRESS_5;
          break;
      }
-     return(
+     return (
        <TabNavigatorItem
         title={title}
         renderIcon={()=><Image style={styles.tabIcon} source={tabNomal}/>}
@@ -118,23 +114,22 @@ export default class Home extends Component {
    /**
    自定义tabbar
    **/
-  tabBarView(){
+  tabBarView() {
     return (
-      <View style={{flex:1}}>
-      <TabNavigator tabBarStyle={styles.tab}>
-      {this.renderTabView('推荐','Recommend',false)}
-      {this.renderTabView('游戏','Game',false)}
-      {this.renderTabView('软件','Software',false)}
-      {this.renderTabView('发现','Find',false)}
-      {this.renderTabView('管理','Mgr',false)}
-      </TabNavigator>
+      <View style={{flex: 1}}>
+        <TabNavigator tabBarStyle={styles.tab}>
+          {this.renderTabView('推荐', 'Recommend', false)}
+          {this.renderTabView('游戏', 'Game', false)}
+          {this.renderTabView('软件', 'Software', false)}
+          {this.renderTabView('发现', 'Find', false)}
+          {this.renderTabView('管理', 'Mgr', false)}
+        </TabNavigator>
       </View>
     );
   }
 
-
   render() {
-    var tabBarView=this.tabBarView();
+    var tabBarView = this.tabBarView();
     return (
       <View style={styles.container}>
         {tabBarView}
@@ -148,7 +143,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
-
   },
   welcome: {
     fontSize: 20,
@@ -160,10 +154,10 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-  tab:{
+  tab: {
     height: 52,
-    alignItems:'center',
-    backgroundColor:'#f4f5f6',
+    alignItems: 'center',
+    backgroundColor: '#f4f5f6',
   },
   tabIcon:{
     width:25,

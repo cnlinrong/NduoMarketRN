@@ -70,7 +70,9 @@ export default class Main extends Component {
   }
 
   doRender = () => {
-    return (<Navigator initialRoute={{pageCode: PAGE_CODE_HOME}} renderScene={(route, navigator) => {
+    return (<Navigator
+      initialRoute={{pageCode: PAGE_CODE_HOME}}
+      renderScene={(route, navigator) => {
         if (route.pageCode == PAGE_CODE_HOME) {
           this.setState({pageCode: PAGE_CODE_HOME, navigator: navigator});
           return (<Home gotoSearch={() => {

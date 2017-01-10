@@ -6,7 +6,7 @@ import {
   View,
   ScrollView
 } from 'react-native';
-import ScrollableTabView,{ ScrollableTabBar } from 'react-native-scrollable-tab-view';
+import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import SearchBar from './SearchBar.js';
 
 export default class Game extends Component {
@@ -37,7 +37,7 @@ export default class Game extends Component {
         textStyle={{ fontSize: 13 }}
         backgroundColor='#ffd121'
         tabStyle={{height: 30, alignItems: 'stretch', justifyContent: 'flex-start', paddingLeft: 10, paddingRight: 10}}
-       />);
+    />);
   }
 
 }
