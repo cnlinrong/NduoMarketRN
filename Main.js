@@ -16,11 +16,13 @@ import Account from './Account.js';
 import DownloadManager from './DownloadManager.js';
 import Search from './Search.js';
 import Home from './Home.js';
+import AppDetail from './AppDetail.js';
 
 const PAGE_CODE_HOME = 1000;// 首页
 const PAGE_CODE_USER_MANAGER = 1001;// 用户管理
 const PAGE_CODE_DOWNLOAD_MANAGER = 1002;// 下载管理
 const PAGE_CODE_SEARCH = 1003;// 搜索页
+const PAGE_CODE_APP_DETAIL = 1004;// 应用详情页
 
 export default class Main extends Component {
 
@@ -81,6 +83,8 @@ export default class Main extends Component {
             navigator.push({pageCode: PAGE_CODE_USER_MANAGER});
           }} gotoDownload={() => {
             navigator.push({pageCode: PAGE_CODE_DOWNLOAD_MANAGER});
+          }} gotoAppDetail={() => {
+            navigator.push({pageCode: PAGE_CODE_APP_DETAIL});
           }} />);
         } else if (route.pageCode == PAGE_CODE_USER_MANAGER) {
           this.setState({pageCode: PAGE_CODE_USER_MANAGER, navigator: navigator});
@@ -95,6 +99,11 @@ export default class Main extends Component {
         } else if (route.pageCode == PAGE_CODE_SEARCH) {
           this.setState({pageCode: PAGE_CODE_SEARCH, navigator: navigator});
           return (<Search gotoBack={() => {
+            navigator.pop();
+          }} />);
+        } else if (route.pageCode == PAGE_CODE_APP_DETAIL) {
+          this.setState({pageCode: PAGE_CODE_APP_DETAIL, navigator: navigator});
+          return (<AppDetail gotoBack={() => {
             navigator.pop();
           }} />);
         }

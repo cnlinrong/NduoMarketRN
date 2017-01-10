@@ -105,7 +105,7 @@ export default class Home extends Component {
      } else if (tabName=='Software') {
        return (<Software gotoSearch={this.props.gotoSearch} gotoAccount={this.props.gotoAccount} gotoDownload={this.props.gotoDownload} />);
      } else if (tabName=='Find') {
-       return (<Find gotoSearch={this.props.gotoSearch} gotoAccount={this.props.gotoAccount} gotoDownload={this.props.gotoDownload} />);
+       return (<Find gotoSearch={this.props.gotoSearch} gotoAccount={this.props.gotoAccount} gotoDownload={this.props.gotoDownload} gotoAppDetail={this.props.gotoAppDetail} />);
      } else if (tabName=='Mgr') {
        return (<Mgr gotoSearch={this.props.gotoSearch} gotoAccount={this.props.gotoAccount} gotoDownload={this.props.gotoDownload} />);
      }
