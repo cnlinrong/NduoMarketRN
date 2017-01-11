@@ -8,7 +8,8 @@ import {
   Alert,
   Navigator,
   ToastAndroid,
-  Platform
+  Platform,
+  StatusBar
 } from 'react-native';
 import TabBarItem from './TabBarItem.js';
 import SearchBar from './SearchBar.js';
@@ -29,12 +30,9 @@ export default class Main extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {pageCode: PAGE_CODE_HOME, exitFlag: false};
-  }
-
-  shouldComponentUpdate() {
-    //完全静态的组件,无需更新
-    return false;
+    this.pageCode = PAGE_CODE_HOME;
+    this.exitFlag = false;
+    this.navigator = null;
   }
 
   componentDidMount() {
@@ -52,72 +50,82 @@ export default class Main extends Component {
   }
 
   handleBack = () => {
-    if (this.state.pageCode == PAGE_CODE_HOME) {
-      if (this.state.exitFlag) {
+    if (this.pageCode == PAGE_CODE_HOME) {
+      if (this.exitFlag) {
         BackAndroid.exitApp(0);
       } else {
         ToastAndroid.show('再按一次退出N多市场', ToastAndroid.SHORT);
-        this.setState({exitFlag: true});
+        this.exitFlag = true;
         this.timer = setTimeout(() => {
-          this.setState({exitFlag: false});
+          this.exitFlag = false;
         }, 1500);
       }
       return true;
     } else {
-      if (this.state.navigator) {
-        this.state.navigator.pop();
+      if (this.navigator) {
+        this.navigator.pop();
         return true;
       }
     }
   }
 
   doRender = () => {
-    return (<Navigator
-      initialRoute={{pageCode: PAGE_CODE_HOME}}
-      renderScene={(route, navigator) => {
-        if (route.pageCode == PAGE_CODE_HOME) {
-          this.setState({pageCode: PAGE_CODE_HOME, navigator: navigator});
-          return (<Home gotoSearch={() => {
-            navigator.push({pageCode: PAGE_CODE_SEARCH});
-          }} gotoAccount={() => {
-            navigator.push({pageCode: PAGE_CODE_USER_MANAGER});
-          }} gotoDownload={() => {
-            navigator.push({pageCode: PAGE_CODE_DOWNLOAD_MANAGER});
-          }} gotoAppDetail={() => {
-            navigator.push({pageCode: PAGE_CODE_APP_DETAIL});
-          }} />);
-        } else if (route.pageCode == PAGE_CODE_USER_MANAGER) {
-          this.setState({pageCode: PAGE_CODE_USER_MANAGER, navigator: navigator});
-          return (<Account gotoBack={() => {
-            navigator.pop();
-          }} />);
-        } else if (route.pageCode == PAGE_CODE_DOWNLOAD_MANAGER) {
-          this.setState({pageCode: PAGE_CODE_DOWNLOAD_MANAGER, navigator: navigator});
-          return (<DownloadManager gotoBack={() => {
-            navigator.pop();
-          }} />);
-        } else if (route.pageCode == PAGE_CODE_SEARCH) {
-          this.setState({pageCode: PAGE_CODE_SEARCH, navigator: navigator});
-          return (<Search gotoBack={() => {
-            navigator.pop();
-          }} />);
-        } else if (route.pageCode == PAGE_CODE_APP_DETAIL) {
-          this.setState({pageCode: PAGE_CODE_APP_DETAIL, navigator: navigator});
-          return (<AppDetail gotoBack={() => {
-            navigator.pop();
-          }} />);
-        }
-      }}
-      configureScene={(route, routeStack) => {
-        if (route.pageCode == PAGE_CODE_USER_MANAGER) {
-          return Navigator.SceneConfigs.FloatFromLeft;
-        } else if (route.pageCode == PAGE_CODE_SEARCH) {
-          return Navigator.SceneConfigs.FloatFromBottomAndroid;
-        } else {
-          return Navigator.SceneConfigs.FloatFromRight;
-        }
-      }}
-    />);
+    return (
+      <View style={{flex: 1}}>
+        <StatusBar backgroundColor="#ffd121" translucent={false} />
+        <Navigator
+          initialRoute={{pageCode: PAGE_CODE_HOME}}
+          renderScene={(route, navigator) => {
+            if (route.pageCode == PAGE_CODE_HOME) {
+              this.pageCode = PAGE_CODE_HOME;
+              this.navigator = navigator;
+              return (<Home gotoSearch={() => {
+                navigator.push({pageCode: PAGE_CODE_SEARCH});
+              }} gotoAccount={() => {
+                navigator.push({pageCode: PAGE_CODE_USER_MANAGER});
+              }} gotoDownload={() => {
+                navigator.push({pageCode: PAGE_CODE_DOWNLOAD_MANAGER});
+              }} gotoAppDetail={() => {
+                navigator.push({pageCode: PAGE_CODE_APP_DETAIL});
+              }} />);
+            } else if (route.pageCode == PAGE_CODE_USER_MANAGER) {
+              this.pageCode = PAGE_CODE_USER_MANAGER;
+              this.navigator = navigator;
+              return (<Account gotoBack={() => {
+                navigator.pop();
+              }} />);
+            } else if (route.pageCode == PAGE_CODE_DOWNLOAD_MANAGER) {
+              this.pageCode = PAGE_CODE_DOWNLOAD_MANAGER;
+              this.navigator = navigator;
+              return (<DownloadManager gotoBack={() => {
+                navigator.pop();
+              }} />);
+            } else if (route.pageCode == PAGE_CODE_SEARCH) {
+              this.pageCode = PAGE_CODE_SEARCH;
+              this.navigator = navigator;
+              return (<Search gotoBack={() => {
+                navigator.pop();
+              }} />);
+            } else if (route.pageCode == PAGE_CODE_APP_DETAIL) {
+              this.pageCode = PAGE_CODE_APP_DETAIL;
+              this.navigator = navigator;
+              return (<AppDetail gotoBack={() => {
+                navigator.pop();
+              }} />);
+            }
+          }}
+          configureScene={(route, routeStack) => {
+            if (route.pageCode == PAGE_CODE_USER_MANAGER) {
+              return Navigator.SceneConfigs.FloatFromLeft;
+            } else if (route.pageCode == PAGE_CODE_SEARCH) {
+              return Navigator.SceneConfigs.FloatFromBottomAndroid;
+            } else {
+              return Navigator.SceneConfigs.FloatFromRight;
+            }
+          }}
+        />
+      </View>
+    );
   };
 
   render() {

@@ -5,7 +5,8 @@ import {
   View,
   Image,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native';
 import Toolbar from './Toolbar.js';
 
@@ -14,6 +15,7 @@ export default class AppDetail extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor="#dddddd" translucent={false} />
         <Toolbar onBack={this.props.gotoBack} title="应用详情" />
         <View style={styles.content}>
           <Text>应用详情页面</Text>

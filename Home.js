@@ -99,7 +99,7 @@ export default class Home extends Component {
 
    switchTab = (tabName) => {
      if (tabName=='Recommend') {
-       return (<Recommend gotoSearch={this.props.gotoSearch} gotoAccount={this.props.gotoAccount} gotoDownload={this.props.gotoDownload} />);
+       return (<Recommend gotoSearch={this.props.gotoSearch} gotoAccount={this.props.gotoAccount} gotoDownload={this.props.gotoDownload} gotoAppDetail={this.props.gotoAppDetail} />);
      } else if (tabName=='Game') {
        return (<Game gotoSearch={this.props.gotoSearch} gotoAccount={this.props.gotoAccount} gotoDownload={this.props.gotoDownload} />);
      } else if (tabName=='Software') {

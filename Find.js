@@ -24,7 +24,7 @@ export default class Find extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getAppList();
   }
 
@@ -40,6 +40,9 @@ export default class Find extends Component {
       })
       .catch((error) => {
         console.error(error);
+        this.setState({
+          refreshing: false
+        });
       });
   };
 
@@ -56,14 +59,13 @@ export default class Find extends Component {
           }
           dataSource={this.state.dataSource}
           renderRow={this.renderTableCell}
-          renderSeparator={() => <View style={styles.separator} />}
+          renderSeparator={(sectionID, rowID, adjacentRowHighlighted) => <View key={sectionID + '-' + rowID} style={styles.separator} />}
         />
       </View>
     );
   }
 
   renderTableCell = (rowData) => {
-    console.log(rowData);
     return (<AppTableCell appData={rowData} gotoAppDetail={this.props.gotoAppDetail} />);
   };
 

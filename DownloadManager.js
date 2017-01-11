@@ -5,7 +5,8 @@ import {
   View,
   Image,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native';
 import Toolbar from './Toolbar.js';
 
@@ -14,6 +15,7 @@ export default class DownloadManager extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor="#dddddd" translucent={false} />
         <Toolbar onBack={this.props.gotoBack} title="下载管理" />
         <View style={styles.content}>
           <Text>下载管理</Text>

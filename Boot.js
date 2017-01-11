@@ -3,7 +3,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  StatusBar
 } from 'react-native';
 
 export default class Boot extends Component {
@@ -11,6 +12,7 @@ export default class Boot extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor="#ffffff" translucent={true} />
         <Text style={styles.loading}>N多应用市场</Text>
       </View>
     );
