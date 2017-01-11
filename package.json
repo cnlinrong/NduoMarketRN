@@ -11,7 +11,7 @@
 		"react-native": "0.39.2",
 		"react-native-scrollable-tab-view": "^0.5.3",
     	"react-native-tab-navigator": "^0.3.2",
-    	"react-native-banner": "^0.1.0"
+    	"react-timer-mixin": "^0.13.3"
 	},
 	"devDependencies": {
 		"babel-jest": "18.0.0",

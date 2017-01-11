@@ -12,7 +12,7 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, {}]}>
         <TouchableOpacity onPress={this.props.onAccount} activeOpacity={0.5}>
           <Image source={require('./img/common_head_account.png')} style={styles.account} />
         </TouchableOpacity>

@@ -8,7 +8,7 @@ import {
   ListView,
   RefreshControl
 } from 'react-native';
-import Banner from 'react-native-banner';
+import Banner from './react-native-banner/Banner.js';
 import SearchBar from './SearchBar.js';
 import GridView from './GridView.js';
 import AppGridCell from './AppGridCell.js';
@@ -76,7 +76,6 @@ export default class Recommend extends Component {
   };
 
   render() {
-    console.log(this.banners);
     return (
       <View style={styles.container}>
         <SearchBar onSearch={this.props.gotoSearch} onAccount={this.props.gotoAccount} onDownload={this.props.gotoDownload} />
