@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 
 const BACK_NORMAL = require('./img/common_button_back_normal.png');
@@ -14,8 +15,9 @@ const BACK_PRESSED = require('./img/common_button_back_pressed.png');
 export default class Toolbar extends Component {
 
   render() {
+    let iOS_style = Platform.OS == 'ios' ? {paddingTop: 20} : {};
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, iOS_style]}>
         <TouchableOpacity onPress={this.props.onBack} activeOpacity={0.5}>
           <View style={styles.backContainer}>
             <Image source={BACK_NORMAL} style={styles.img_back} />

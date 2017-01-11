@@ -14,6 +14,7 @@ import {
 
 import Swiper from './Swiper';
 const screenWidth = Dimensions.get('window').width;
+const BANNER_INDICATOR_BG = require('../img/banner_indicator_bg.png');
 
 export default class Banner extends React.Component {
 
@@ -43,7 +44,7 @@ export default class Banner extends React.Component {
                         }
                     }
                 >
-                    <Image style={styles.image} source={typeof(image) == 'string' ? {uri: image} : image} />
+                    <Image resizeMode='stretch' style={styles.image} source={typeof(image) == 'string' ? {uri: image} : image} />
                 </TouchableOpacity>
             );
         });
@@ -53,25 +54,20 @@ export default class Banner extends React.Component {
               {...this.props}
               autoplay={true}
               whRatio={1.9}
-              dotStyle={{width: 6, height: 6, backgroundColor:'rgba(255,255,255,.3)'}}
-              activeDotStyle={{width: 6, height: 6, backgroundColor:'white'}}
+              dotStyle={{width: 6, height: 6, backgroundColor:'#ddd'}}
+              activeDotStyle={{width: 6, height: 6, backgroundColor:'#ffd121'}}
               renderTitle={
                   (index, view) => {
                       if (!this.titles[index]) {
                           return null;
                       }
                       return (
-                          <View key={index} style={styles.titleView}>
-                              <View style={styles.titleBg} />
-                              <Text style={styles.titleStyle} numberOfLines={1}>
-                                  {this.titles[index]}
-                              </Text>
-                          </View>
+                          <Image resizeMode='stretch' style={styles.titleView} source={BANNER_INDICATOR_BG} />
                       );
                   }
               }
               paginationStyle={{
-                    bottom: 10, left: null, right: 10
+                    bottom: 10
               }}
               loop={true}
             >
@@ -89,21 +85,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         position: 'absolute',
         bottom: 0,
-        justifyContent: 'center',
-        height: 35,
+        height: 32,
         width: screenWidth,
     },
     titleBg: {
-        backgroundColor: 'rgba(0,0,0,.4)',
+        backgroundColor: 'transparent',
         position: 'absolute',
         bottom: 0,
-        height: 35,
+        height: 32,
         width: screenWidth,
     },
     titleStyle: {
-        color: 'white',
-        marginRight: 100,
-        marginLeft: 10,
+        color: 'black',
     },
     image: {
         flex: 1,

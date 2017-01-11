@@ -5,14 +5,16 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 
 export default class SearchBar extends Component {
 
   render() {
+    let iOS_style = Platform.OS == 'ios' ? {paddingTop: 20, backgroundColor: "#ffd121"} : {};
     return (
-      <View style={[styles.container, {}]}>
+      <View style={[styles.container, iOS_style]}>
         <TouchableOpacity onPress={this.props.onAccount} activeOpacity={0.5}>
           <Image source={require('./img/common_head_account.png')} style={styles.account} />
         </TouchableOpacity>

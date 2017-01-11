@@ -17,7 +17,7 @@ export default class Game extends Component {
         <SearchBar onSearch={this.props.gotoSearch} onAccount={this.props.gotoAccount} onDownload={this.props.gotoDownload} />
         <ScrollableTabView
           initialPage={0}
-          scrollWithoutAnimation={true}
+          scrollWithoutAnimation={false}
           renderTabBar={this.renderTabBar}>
            <View tabLabel='分类' style={styles.itemLayout}><Text>分类</Text></View>
            <View tabLabel='推荐' style={styles.itemLayout}><Text>推荐</Text></View>

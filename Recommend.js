@@ -79,7 +79,6 @@ export default class Recommend extends Component {
     return (
       <View style={styles.container}>
         <SearchBar onSearch={this.props.gotoSearch} onAccount={this.props.gotoAccount} onDownload={this.props.gotoDownload} />
-        <View style={styles.dividerLine} />
         <ScrollView
           showsVerticalScrollIndicator={false}
           refreshControl={
@@ -128,7 +127,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fff',
   },
   scrollview: {
     flex: 1,
