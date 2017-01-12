@@ -33,7 +33,7 @@ export default class AppTableCell extends Component {
               <TouchableOpacity activeOpacity={0.5} onPress={this.downloadApp}>
                 <Image source={BTN_DOWNLOAD_NORMAL} style={styles.btn_download} />
               </TouchableOpacity>
-              <Text>下载</Text>
+              <Text style={styles.downloadText}>下载</Text>
             </View>
         </View>
       </TouchableHighlight>
@@ -89,4 +89,7 @@ const styles = StyleSheet.create({
     height: 32,
     marginBottom: 5
   },
+  downloadText: {
+    color: '#feb822',
+  }
 });

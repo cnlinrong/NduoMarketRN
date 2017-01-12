@@ -10,8 +10,7 @@ import {
 } from 'react-native';
 import Banner from './react-native-banner/Banner.js';
 import SearchBar from './SearchBar.js';
-import GridView from './GridView.js';
-import AppGridCell from './AppGridCell.js';
+import AppGridView from './AppGridView.js';
 import FastUtilsView from './FastUtilsView.js';
 
 const BANNER_URL = 'http://market3.nduoa.com/?actionid=216&cardid=281794&mt=4&sv=5.2&osv=4.4.2&cpu=armeabi-v7a,armeabi&rslt=720*1280&gpu=&imei=359209027536683&imsi=460005907323770&nt=10&dm=H30-U10&lan=zh-CHT&chl=nduo&cuid=1CFFD9B38A73B154F7235CAD8FCCA5FC%7C386635720902953&tz=GMT%2B08%3A00&apilevel=19&pid=2&sid=abd0428c32b30013bd6d636327da4923&sign=fed2abbd7a70dd576ccb2f7ab8f97c62';
@@ -114,7 +113,7 @@ export default class Recommend extends Component {
         >
           {this.renderBanner()}
           {this.renderFastUtilsView()}
-          <GridView column={4} dividerHorizontal={0} dataSource={this.state.dataSource} renderItem={this.renderItem} />
+          <AppGridView title='精品推荐' dataSource={this.state.dataSource} renderItem={this.renderItem} gotoAppDetail={this.props.gotoAppDetail} />
         </ScrollView>
       </View>
     );
@@ -149,10 +148,6 @@ export default class Recommend extends Component {
 
   clickListener = (index) => {
     alert('点击了' + index);
-  };
-
-  renderItem = (rowData) => {
-    return (<AppGridCell appData={rowData} gotoAppDetail={this.props.gotoAppDetail} />);
   };
 
 }

@@ -39,7 +39,8 @@ export default class FastUtilsView extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    flex: 1
+    flex: 1,
+    marginBottom: 15
   },
   text: {
     fontSize: 14,

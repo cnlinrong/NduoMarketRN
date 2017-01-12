@@ -8,7 +8,7 @@ import {
   RefreshControl
 } from 'react-native';
 import SearchBar from './SearchBar.js';
-import AppTableCell from './AppTableCell.js';
+import AppListView from './AppListView.js';
 
 const APP_LIST_URL = 'http://market3.nduoa.com/?actionid=205&cardid=281776&mt=4&sv=5.2&osv=4.4.2&cpu=armeabi-v7a,armeabi&rslt=720*1280&gpu=&imei=359209027536683&imsi=460005907323770&nt=10&dm=H30-U10&lan=zh-CHT&chl=nduo&cuid=1CFFD9B38A73B154F7235CAD8FCCA5FC%7C386635720902953&tz=GMT%2B08%3A00&apilevel=19&pid=2&sid=abd0428c32b30013bd6d636327da4923&sign=a86115600cade1ec3446562f0ab9ccd5';
 const dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -50,24 +50,10 @@ export default class Find extends Component {
     return (
       <View style={styles.container}>
         <SearchBar onSearch={this.props.gotoSearch} onAccount={this.props.gotoAccount} onDownload={this.props.gotoDownload} />
-        <ListView
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this.getAppList}
-            />
-          }
-          dataSource={this.state.dataSource}
-          renderRow={this.renderTableCell}
-          renderSeparator={(sectionID, rowID, adjacentRowHighlighted) => <View key={sectionID + '-' + rowID} style={styles.separator} />}
-        />
+        <AppListView title='今日热门' refreshing={this.state.refreshing} onRefresh={this.getAppList} dataSource={this.state.dataSource} gotoAppDetail={this.props.gotoAppDetail} />
       </View>
     );
   }
-
-  renderTableCell = (rowData) => {
-    return (<AppTableCell appData={rowData} gotoAppDetail={this.props.gotoAppDetail} />);
-  };
 
 }
 
